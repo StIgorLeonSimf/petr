@@ -14,9 +14,6 @@ for j in range(3):
     penup()
     goto(coord[j], 0)
     pendown()
-# for i in range(3):
-#     forward(100)
-#     lt(120)
 
 
 
