@@ -65,9 +65,22 @@
 #         print(f'{j * i:>2}', end=' ')
 #     print()
 
-for n in range(100, 200):
-    for i in range(2, n):
-        if n % i == 0:
-            break
-    else:
-        print(n, end=' ')
+# for n in range(100, 200):
+#     for i in range(2, n):
+#         if n % i == 0:
+#             break
+#     else:
+#         print(n, end=' ')
+
+n = int(input('> '))
+sm = 0
+cnt = 0
+while n != 0:
+    sm += n
+    cnt += 1
+    try:
+        n = int(input('> '))
+    except Exception as er:
+        n = int(input('> '))
+
+print(sm, cnt)
