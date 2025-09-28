@@ -1,4 +1,5 @@
 """map"""
+from functools import reduce
 
 lst = ['22', '33', '44']
 # res = [int(i) for i in lst]
@@ -28,14 +29,22 @@ ls = [2, 3, 4, 5]
 
 """filter"""
 
-res = list(filter(lambda x: x > 3, ls))
-# res = list(filter(lambda x: x % 2 == 0, ls))
-res1 = []
-for i in ls:
-    if i > 3:
-        res1.append(i)
+# res = list(filter(lambda x: x > 3, ls))
+# # res = list(filter(lambda x: x % 2 == 0, ls))
+# res1 = []
+# for i in ls:
+#     if i > 3:
+#         res1.append(i)
+#
+# res2 = [i for i in ls if i > 3]
+# print(res)
+# print(res1)
+# print(res2)
 
-res2 = [i for i in ls if i > 3]
+"""reduce"""
+
+city = ['У', 'ф', 'а', '-', 4, 5]
+nums = [1, 2, 3, 4, 5]
+res = reduce(lambda n, m: str(n) + str(m), city)
+res = reduce(lambda n, m: (n + m), nums) / len(nums)
 print(res)
-print(res1)
-print(res2)
