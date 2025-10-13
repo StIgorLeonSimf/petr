@@ -82,40 +82,52 @@ for i, j, a in zip(names, age, marks):
 
 
 
-# import math
+# # import math
+# #
+# # positive_infinity = math.inf
+# #
+# # T = (-273, positive_infinity)
+# T = (-273, float('inf'))
+# while T != str(T):
+#     T = input("Введите значение температуры воды: ")
 #
-# positive_infinity = math.inf
+#     if T.isdigit() and T[0] <= T < T[1]:
+#         T = int(T)
+#         if T <= 0:
+#             print("Озеро замерзло")
 #
-# T = (-273, positive_infinity)
-T = (-273, float('inf'))
-while T != str(T):
-    T = input("Введите значение температуры воды: ")
+#         elif T > 0 and T < 10:
+#             print("Ледяная вода")
+#
+#         elif T >= 10 and T < 15:
+#             print("Жуть как холодно")
+#
+#         elif T >= 15 and T < 18:
+#             print("Прохладно, но можно искупаться")
+#
+#         elif T >= 18 and T < 24:
+#             print("кайф")
+#
+#         elif T >= 24 and T < 30:
+#             print("Полный кайф")
+#
+#         elif T >= 30 and T < 36:
+#             print("Горячая вода")
+#
+#         elif T >= 36:
+#             print("Кипяток")
+#
+# else:
+#     print("Ошибка ввода данных")
 
-    if T.isdigit() and T[0] <= T < T[1]:
-        T = int(T)
-        if T <= 0:
-            print("Озеро замерзло")
 
-        elif T > 0 and T < 10:
-            print("Ледяная вода")
+name = ['Mary', 'Ivan']
+surname = ['Petrova', 'Andreev']
+age = [15, 17]
 
-        elif T >= 10 and T < 15:
-            print("Жуть как холодно")
+for n, s, a in zip(name, surname, age):
+    print(n, s, a)
 
-        elif T >= 15 and T < 18:
-            print("Прохладно, но можно искупаться")
-
-        elif T >= 18 and T < 24:
-            print("кайф")
-
-        elif T >= 24 and T < 30:
-            print("Полный кайф")
-
-        elif T >= 30 and T < 36:
-            print("Горячая вода")
-
-        elif T >= 36:
-            print("Кипяток")
-
-else:
-    print("Ошибка ввода данных")
+persone = [('Mary', 'Petrova', 15), ('Ivan', 'Andreev', 17)]
+for i, k, j in persone:
+    print(i, k, j)

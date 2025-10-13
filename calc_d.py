@@ -69,7 +69,7 @@ def calcul():
         den3.config(text=res[1])
 
 
-root =Tk()
+root = Tk()
 root.title('Калькулятор дробей')
 root.geometry('300x200+450+200')
 frame = Frame(root)
@@ -113,4 +113,5 @@ den3.config(width=3, font='Arial 15', justify='center', bg='lightgrey')
 den3.grid(row=2, column=5)
 
 root.mainloop()
+
 

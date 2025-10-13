@@ -39,3 +39,7 @@ s1 = 'aaa bbb ccc ddd '
 s2 = '111 222 333 444 '
 
 """ aaa 111 bbb 222 ccc 333 ddd 444 """
+
+s = 'АаБбЯя'
+for i in s:
+    print(ord(i))
