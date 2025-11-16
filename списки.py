@@ -121,13 +121,30 @@ for i, j, a in zip(names, age, marks):
 #     print("Ошибка ввода данных")
 
 
-name = ['Mary', 'Ivan']
-surname = ['Petrova', 'Andreev']
-age = [15, 17]
+# name = ['Mary', 'Ivan']
+# surname = ['Petrova', 'Andreev']
+# age = [15, 17]
+#
+# for n, s, a in zip(name, surname, age):
+#     print(n, s, a)
+#
+# persone = [('Mary', 'Petrova', 15), ('Ivan', 'Andreev', 17)]
+# for i, k, j in persone:
+#     print(i, k, j)
 
-for n, s, a in zip(name, surname, age):
-    print(n, s, a)
+import random
 
-persone = [('Mary', 'Petrova', 15), ('Ivan', 'Andreev', 17)]
-for i, k, j in persone:
-    print(i, k, j)
+print(random.random())
+print(random.uniform(20, 22))
+
+print(random.randint(10, 11))
+print(random.randrange(2, 20, 2))
+print(random.randrange(10, 12))
+
+print(random.choice(range(10, 12)))
+names = ('Dasha', 'Masha', 'Sasha', 'Glasha', 'Pedro')
+lst = [22, '14', True, 'STROKA', False, 4.44]
+print(random.choice(lst))
+
+print(random.choices(names, k=8))
+print(random.sample(lst, 6))
