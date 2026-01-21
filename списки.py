@@ -131,20 +131,39 @@ for i, j, a in zip(names, age, marks):
 # persone = [('Mary', 'Petrova', 15), ('Ivan', 'Andreev', 17)]
 # for i, k, j in persone:
 #     print(i, k, j)
+#
+# import random
+#
+# print(random.random())
+# print(random.uniform(20, 22))
+#
+# print(random.randint(10, 11))
+# print(random.randrange(2, 20, 2))
+# print(random.randrange(10, 12))
+#
+# print(random.choice(range(10, 12)))
+# names = ('Dasha', 'Masha', 'Sasha', 'Glasha', 'Pedro')
+# lst = [22, '14', True, 'STROKA', False, 4.44]
+# print(random.choice(lst))
+#
+# print(random.choices(names, k=8))
+# print(random.sample(lst, 6))
 
-import random
+lst = []
+lst.append(100)
+lst.append(200)
+lst.insert(1, 1000)
 
-print(random.random())
-print(random.uniform(20, 22))
+lst.extend(lst)
+print(lst)
 
-print(random.randint(10, 11))
-print(random.randrange(2, 20, 2))
-print(random.randrange(10, 12))
+arr = [12, 15, 45, 67]
+arr[0] = 100
+arr[1] = 150
+arr[2] = 450
+print(arr)
 
-print(random.choice(range(10, 12)))
-names = ('Dasha', 'Masha', 'Sasha', 'Glasha', 'Pedro')
-lst = [22, '14', True, 'STROKA', False, 4.44]
-print(random.choice(lst))
-
-print(random.choices(names, k=8))
-print(random.sample(lst, 6))
+arr = [0] * 15
+for i in range(len(arr)):
+    arr[i] = i + 10
+print(arr)

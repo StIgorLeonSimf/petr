@@ -125,6 +125,45 @@ def grad(nm):
     target = f'Привет, {nm}!'
     return target
 
-print(grad('Иван'))
-print(grad('Петр'))
-print(grad('Андрей'))
+# print(grad('Иван'))
+# print(grad('Петр'))
+# print(grad('Андрей'))
+
+# d = {'Math': 'A', 'Chem': 'B', 'Art': 'A'}
+# def set_default(dic, k, v):
+#     if k not in dic:
+#         d[k] = v
+#     return d[k]
+#
+# res = set_default(d,'Num', []).append(1000)
+# print(res)
+# print(d)
+
+def coffee(name, cost):
+    name = name.capitalize()
+    drinks = {'Горячий шоколад': 120,
+              'Чай': 80,
+              'Капучино': 100
+              }
+    if name in drinks:
+        if cost == drinks[name]:
+            print(f'Вы заказали {name}')
+            return name
+        elif cost > drinks[name]:
+            dif = cost - drinks[name]
+            print(f'Вы заказали {name}')
+            return f'{name} и сдача - {dif} руб.'
+        else:
+            print(f'Вы заказали {name} но оплаты недостаточно')
+            return f'{cost} рублей'
+
+
+hand = coffee('Горячий шоколад', 120)
+hand = hand.upper()
+print(f'В моей руке есть {hand}')
+print()
+hand = coffee('капучино', 120)
+print(f'В моей руке есть {hand}')
+print()
+hand = coffee('Чай', 60)
+print(f'В моей руке есть {hand}')

@@ -1,6 +1,6 @@
 """dict"""
 """Словарь - неупорядоченный набор пар ключ-значенние, в которых ключ уникален"""
-st = set()
+st = set()  # пустое множество
 d = {}
 
 # ls = ['свинец', 'Золото']
@@ -78,7 +78,7 @@ ages = [18, 19, 23]
 rost = [169, 165, 177]
 for i, j, k, m in zip(inns, names, ages, rost):
     print(i, j, k, m)
-    
+
 humans1 = [(111111, 'Petr', 18, 169)]
 for i, j, k, l in humans1:
     print(i, j, k, l)
