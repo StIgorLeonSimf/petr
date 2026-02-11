@@ -195,7 +195,7 @@ from math import sqrt
 #         print(f'Продукт: {k},'
 #               f' калорийность: {calories}')
 
-        # print(k, b, g, u)
+# print(k, b, g, u)
 
 #
 # tp = ((22, 'first'), (33, 'second'), (44, 'third'))
@@ -234,8 +234,210 @@ for i in open('music.csv', encoding='utf-8'):
 #     if v > mx:
 #         mx = v
 #         nm = k
-nm = max(res, key=lambda x: res[x] )
-# obj = max(res.items(), key=lambda x: x[1])
-# nm = obj[0]
+# nm = max(res, key=lambda x: res[x] )
+# # obj = max(res.items(), key=lambda x: x[1])
+# # nm = obj[0]
+#
+# print(nm)
 
-print(nm)
+"""
+1. Постановка задачи
+Вы получили текстовые логи веб-сервера в формате Apache Common Log Format. 
+Необходимо написать программу для анализа этих логов, которая предоставит 
+различную статистику.
+
+Формат одной строки лога:
+
+text
+127.0.0.1 - - [10/Feb/2024:13:55:36 +0300] "GET /index.html HTTP/1.1" 200 2326
+Где:
+
+127.0.0.1 - IP-адрес клиента
+[10/Feb/2024:13:55:36 +0300] - дата и время запроса
+"GET /index.html HTTP/1.1" - метод, URL и протокол
+200 - код ответа HTTP
+2326 - размер ответа в байтах
+
+2. Требования к реализации
+Часть 1: Функции парсинга (3 балла)
+parse_log_line(line: str) -> dict
+Принимает строку лога, возвращает словарь с разобранными полями:
+
+python
+{
+    'ip': '127.0.0.1',
+    'date': '10/Feb/2024:13:55:36 +0300',
+    'method': 'GET',
+    'url': '/index.html',
+    'protocol': 'HTTP/1.1',
+    'status_code': 200,
+    'size': 2326
+}
+Если строка не соответствует формату, возвращает None.
+
+filter_logs_by_ip(logs: list, ip_address: str) -> list
+Возвращает новый список, содержащий только записи от указанного IP-адреса.
+
+Часть 2: Функции анализа (4 балла)
+
+count_requests_by_method(logs: list) -> dict
+Возвращает словарь, где ключи - HTTP-методы (GET, POST и т.д.), значения - количество запросов.
+
+find_most_frequent_ip(logs: list) -> tuple
+Возвращает кортеж (ip, count) для IP-адреса с наибольшим количеством запросов.
+
+calculate_total_traffic(logs: list) -> int
+Возвращает общий объем переданных данных в байтах (сумма поля size). Если код ответа 4xx или 5xx, такие запросы не учитывать в трафике.
+
+Часть 3: Работа с временем (3 балла)
+
+parse_log_date(date_str: str) -> datetime
+Преобразует строку даты из лога в объект datetime.
+Формат: 10/Feb/2024:13:55:36 +0300
+
+filter_logs_by_time_range(logs: list, start_hour: int, end_hour: int) -> list
+Возвращает логи, сделанные в указанном диапазоне часов (включая start_hour, исключая end_hour). Учитывать только часы, независимо от даты.
+
+3. Основная программа
+Напишите функцию main(), которая:
+
+Считывает логи из файла server_logs.txt
+
+Парсит все строки в список словарей
+
+Выводит меню с вариантами:
+
+text
+1. Общая статистика
+2. Поиск по IP
+3. Анализ по времени суток
+4. Выход
+При выборе опции 1: выводит:
+
+Общее количество запросов
+
+Количество запросов по методам
+
+Самый активный IP-адрес
+
+Общий трафик
+
+При выборе опции 2: запрашивает IP-адрес и выводит статистику для него
+
+При выборе опции 3: запрашивает диапазон часов и показывает количество запросов в этот период
+
+4. Пример данных
+Файл server_logs.txt:
+
+text
+192.168.1.1 - - [10/Feb/2024:09:15:22 +0300] "GET /home.html HTTP/1.1" 200 1234
+192.168.1.2 - - [10/Feb/2024:14:30:45 +0300] "POST /login.php HTTP/1.1" 200 567
+192.168.1.1 - - [10/Feb/2024:14:35:10 +0300] "GET /profile.html HTTP/1.1" 200 2456
+192.168.1.3 - - [10/Feb/2024:20:15:00 +0300] "GET /index.html HTTP/1.1" 404 123
+192.168.1.2 - - [11/Feb/2024:10:10:10 +0300] "GET /about.html HTTP/1.1" 200 1789
+5. Пример работы программы
+text
+=== Анализатор логов ===
+Прочитано 5 записей
+
+Выберите действие:
+1. Общая статистика
+2. Поиск по IP
+3. Анализ по времени суток
+4. Выход
+> 1
+
+Общая статистика:
+Всего запросов: 5
+По методам: {'GET': 4, 'POST': 1}
+Самый активный IP: 192.168.1.1 (2 запроса)
+Общий трафик: 6169 байт
+Критерии оценки:
+0-3 балла: Реализованы только базовые функции парсинга или с ошибками
+
+4-6 баллов: Работает парсинг и основные функции анализа, но есть проблемы с обработкой крайних случаев
+
+7-8 баллов: Полностью рабочая программа, все функции корректно реализованы
+
+9-10 баллов: Программа работает идеально, код хорошо структурирован, добавлена обработка ошибок (файл не найден, некорректный формат логов, некорректный ввод пользователя)
+
+Дополнительное задание (по желанию, +1 балл):
+Реализуйте функцию detect_suspicious_activity(logs: list, threshold: int) -> list, которая находит IP-адреса, с которых было более threshold запросов с кодом ошибки (4xx или 5xx) в течение одного часа.
+
+Эта задача проверяет:
+
+Умение работать со строками и регулярными выражениями (или split)
+
+Обработку файлов
+
+Работу со словарями и списками
+
+Использование модуля datetime"""
+import re
+
+"""{
+    'ip': '127.0.0.1',
+    'date': '10/Feb/2024:13:55:36 +0300',
+    'method': 'GET',
+    'url': '/index.html',
+    'protocol': 'HTTP/1.1',
+    'status_code': 200,
+    'size': 2326
+}"""
+
+
+def parse_log_line(line: str) -> dict:
+    """192.168.1.1 - - [10/Feb/2024:09:15:22 +0300] "GET /home.html HTTP/1.1" 200 1234"""
+    d = {}
+    string = re.findall(r'[^-"[\]]', line)
+    # print(string)
+    string = ''.join(string).replace(' +', '+')
+    # print(string)
+    lst = string.split()
+    # print(lst)
+    d['ip'] = lst[0]
+    d['date'] = lst[1].replace('+', ' +')
+    d['method'] = lst[2]
+    d['url'] = lst[3]
+    d['protocol'] = lst[4]
+    d['status_code'] = lst[5]
+    d['size'] = lst[6]
+    if len(d) != 7:
+        return None
+    return d
+
+
+def filter_logs_by_ip(logs: list, ip_address: str) -> list:
+    res = []
+    for i in logs:
+        if ip_address == i['ip']:
+            res.append(i)
+    return res
+
+
+def count_requests_by_method(logs: list) -> dict:
+    d = {}
+    for i in logs:
+        d[i['method']] = d.get(i['method'], 0) + 1
+    return d
+
+
+def find_most_frequent_ip(logs: list) -> tuple:
+    d = {}
+    for i in logs:
+        d[i['ip']] = d.get(i['ip'], 0) + 1
+    mx = max(d.items(), key=lambda x: x[1])
+    res = list(filter(lambda x: x[1] == mx[1], d.items()))
+    return res
+
+
+# print(parse_log_line('192.168.1.1 - - [10/Feb/2024:09:15:22 +0300] "GET /home.html HTTP/1.1" 200 1234"""'))
+# logs = []
+# for i in open('server_logs.txt', encoding='utf-8'):
+#     logs.append(parse_log_line(i))
+logs = [parse_log_line(i) for i in open('server_logs.txt', encoding='utf-8')]
+# for i in logs:
+#     print(i)
+print(filter_logs_by_ip(logs, '192.168.1.3'))
+print(count_requests_by_method(logs))
+print(find_most_frequent_ip(logs))

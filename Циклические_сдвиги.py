@@ -100,28 +100,35 @@ def quick_sort(nums):
         return quick_sort(l) + e + quick_sort(r)
 
 
-
-l = random.choices(range(1, 1000000), k=5000)
-l1 = l.copy()
-l2 = l.copy()
-l3 = l.copy()
-
-bubble_sort(l)
-selection_sort(l1)
-insert_sort(l2)
-start = time.perf_counter()
-quick_sort(l3)
-stop = time.perf_counter()
-print('Quick_sort -', stop - start)
-
+# l = random.choices(range(1, 1000000), k=5000)
+# l1 = l.copy()
+# l2 = l.copy()
+# l3 = l.copy()
+#
+# bubble_sort(l)
+# selection_sort(l1)
+# insert_sort(l2)
+# start = time.perf_counter()
+# quick_sort(l3)
+# stop = time.perf_counter()
+# print('Quick_sort -', stop - start)
 
 
-l = [3, 2, 4, 1]
+# l = [3, 2, 4, 1]
+#
+# q = 2
+# l = [1]
+# e = [2]
+# r = [3, 4]
+# ret = [1] + [2] + [3, 4]
+# """.............."""
+# ret = [1] + [2] + [3] + [4]
 
-q = 2
-l = [1]
-e = [2]
-r = [3, 4]
-ret = [1] + [2] + [3, 4]
-""".............."""
-ret = [1] + [2] + [3] + [4]
+nums = [3, 1, 6, 4, 9, 1]
+q = 4
+# l = []
+# for n in nums:
+#     if n < q:
+#         l.append(n)
+# l = [n for n in nums if n < q]
+# print(l)
