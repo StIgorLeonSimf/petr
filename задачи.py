@@ -400,7 +400,7 @@ def parse_log_line(line: str) -> dict:
     d['method'] = lst[2]
     d['url'] = lst[3]
     d['protocol'] = lst[4]
-    d['status_code'] = lst[5]
+    d['status_code'] = int(lst[5])
     d['size'] = lst[6]
     if len(d) != 7:
         return None
