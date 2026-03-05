@@ -373,6 +373,7 @@ text
 Работу со словарями и списками
 
 Использование модуля datetime"""
+from typing import List, Dict
 import re
 
 """{
@@ -387,27 +388,27 @@ import re
 
 
 def parse_log_line(line: str) -> dict:
-    """192.168.1.1 - - [10/Feb/2024:09:15:22 +0300] "GET /home.html HTTP/1.1" 200 1234"""
+    """129.168.1.1 - - [10/Feb/2024:09:15:22 +0300] "GET /home.html HTTP/1.1" 200 1234"""
     d = {}
     string = re.findall(r'[^-"[\]]', line)
     # print(string)
     string = ''.join(string).replace(' +', '+')
     # print(string)
     lst = string.split()
-    # print(lst)
+    print(lst)
     d['ip'] = lst[0]
     d['date'] = lst[1].replace('+', ' +')
     d['method'] = lst[2]
     d['url'] = lst[3]
     d['protocol'] = lst[4]
     d['status_code'] = int(lst[5])
-    d['size'] = lst[6]
+    d['size'] = int(lst[6])
     if len(d) != 7:
         return None
     return d
 
 
-def filter_logs_by_ip(logs: list, ip_address: str) -> list:
+def filter_logs_by_ip(logs: List[Dict], ip_address: str) -> List[Dict]:
     res = []
     for i in logs:
         if ip_address == i['ip']:
@@ -431,13 +432,36 @@ def find_most_frequent_ip(logs: list) -> tuple:
     return res
 
 
+def calculate_total_traffic(logs: list) -> int:
+    calc = 0
+    for i in logs:
+        if i['status_code'] >= 400 and i['status_code'] < 600:
+            continue
+        calc += i['size']
+    return calc
+
+
+def main():
+    logs = [parse_log_line(i) for i in open('server_logs.txt', encoding='utf-8')]
+    return logs
+
+
 # print(parse_log_line('192.168.1.1 - - [10/Feb/2024:09:15:22 +0300] "GET /home.html HTTP/1.1" 200 1234"""'))
 # logs = []
 # for i in open('server_logs.txt', encoding='utf-8'):
 #     logs.append(parse_log_line(i))
-logs = [parse_log_line(i) for i in open('server_logs.txt', encoding='utf-8')]
+# logs = [parse_log_line(i) for i in open('server_logs.txt', encoding='utf-8')]
 # for i in logs:
 #     print(i)
-print(filter_logs_by_ip(logs, '192.168.1.3'))
-print(count_requests_by_method(logs))
-print(find_most_frequent_ip(logs))
+# print(filter_logs_by_ip(main(), '192.168.1.3'))
+# print(count_requests_by_method(main()))
+# print(find_most_frequent_ip(main()))
+# print(calculate_total_traffic(main()))
+
+
+a = 'aaa bbb ccc ddd '
+b = '111 222 333 444'
+res = ''
+for i in range(0, len(a), 4):
+    res += a[i:i + 4] + b[i:i + 4]
+print(res)

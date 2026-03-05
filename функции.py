@@ -167,3 +167,29 @@ print(f'В моей руке есть {hand}')
 print()
 hand = coffee('Чай', 60)
 print(f'В моей руке есть {hand}')
+
+# def fib(n):
+#     if n <= 1:
+#         return n
+#     return fib(n-1) + fib(n-2)
+
+
+# print(fib(10))
+
+"""
+0 1 1 2 3 5 8 13 21 34 55
+"""
+
+def fib(n, memo={}):
+
+    if n in memo:
+        return memo[n]
+    if n <= 1:
+        return n
+    memo[n] = fib(n-1, memo) + fib(n-2, memo)
+    print(memo)
+    return memo[n]
+
+memo = {}
+print(fib(4, memo))
+# print(memo)

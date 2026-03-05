@@ -15,11 +15,11 @@ async def f2(n):
 
 
 async def main():
-    # task1 = asyncio.create_task(f1(5))
-    # task2 = asyncio.create_task(f2(100))
-    # await task1
-    # task2
-    await asyncio.gather(f1(10), f2(100))
+    task1 = asyncio.create_task(f1(5))
+    task2 = asyncio.create_task(f2(100))
+    await task1
+    await task2
+    # await asyncio.gather(f1(10), f2(100))
 
 start = time.perf_counter()
 asyncio.run(main())
